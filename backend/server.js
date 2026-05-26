@@ -7,7 +7,13 @@ const ticketRoutes = require('./routes/tickets');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://frontend-cyan-five-63.vercel.app',
+  ],
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+}));
 app.use(express.json());
 
 app.use('/tickets', ticketRoutes);
